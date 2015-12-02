@@ -80,3 +80,4 @@ predict_julian_date_t predict_next_aos(const predict_observer_t *observer, predi
 predict_julian_date_t predict_next_los(const predict_observer_t *observer, predict_orbit_t *orbit, predict_julian_date_t start_time);
 double predict_doppler_shift(const predict_observer_t *observer, const predict_orbit_t *orbit, double downlink_frequency);
 double predict_squint_angle(const predict_observer_t *observer, const predict_orbit_t *orbit, double alon, double alat);
+double predict_path_loss(const predict_observer_t *observer, const predict_orbit_t *orbit, double frequency);

@@ -387,6 +387,18 @@ double predict_doppler_shift(const predict_observer_t *observer, const predict_o
  **/
 double predict_squint_angle(const predict_observer_t *observer, const predict_orbit_t *orbit, double alon, double alat);
 
+/**
+ * Calculate free space path loss at a given downlink frequency with respect to the observer.
+ *
+ * \param observer Point of observation
+ * \param orbit Current state of satellite orbit
+ * \param downlink_frequency Downlink frequency of the satellite
+ * \return The free space path loss in dB at the original frequency
+ * \copyright GPLv2+
+ **/
+double predict_path_loss(const predict_observer_t *observer, const predict_orbit_t *orbit, double frequency);
+
+
 /*!
  * \brief Calculate refraction angle.
  *

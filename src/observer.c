@@ -2,6 +2,7 @@
 #include "unsorted.h"
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "defs.h"
 #include "sun.h"
 
@@ -502,4 +503,13 @@ double predict_doppler_shift(const predict_observer_t *observer, const predict_o
 
 	double sat_range_rate = obs.range_rate*1000.0; //convert to m/s
 	return -frequency*sat_range_rate/SPEED_OF_LIGHT; //assumes that sat_range <<<<< speed of light, which is very ok
+}
+
+double predict_path_loss(const predict_observer_t *observer, const predict_orbit_t *orbit, double frequency)
+{
+	struct predict_observation obs;
+	predict_observe_orbit(observer, orbit, &obs);
+
+	return 20. * log10(4. * M_PI * obs.range * 1.e3 * frequency/SPEED_OF_LIGHT); // log Free Space Path Loss
+
 }
